@@ -1,10 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Google Drive Slideshow</title>
+	<title>Doggie Slideshow</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f7f7f7;
+			color: #333;
+			transition: background-color 0.5s ease;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			transition: box-shadow 0.5s ease;
+			justify-content: center;
+			align-items: center;
+			display: flex;
+		}
+
+		h1 {
+			font-size: 36px;
+			margin: 0;
+			padding: 10px 0;
+			text-align: center;
+		}
+
+		#slideshow {
+			width: 75%;
+			height: 550px;
+			object-fit: contain;
+			border: 2px solid #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			transition: border-color 0.5s ease, box-shadow 0.5s ease;
+			justify-content: center;
+			display: flex;
+			align-items: center;
+		}
+
+		.dots {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 20px;
+		}
+
+		.dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: #bbb;
+			margin: 0 10px;
+			cursor: pointer;
+			transition: background-color 0.5s ease;
+		}
+
+		.dot.active,
+		.dot:hover {
+			background-color: #333;
+		}
+
+		.prev,
+		.next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 50px;
+			height: 50px;
+			background-color: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+			transition: background-color 0.5s ease, color 0.5s ease;
+		}
+
+		.prev:hover,
+		.next:hover {
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+
+		.prev {
+			left: 10px;
+			border-radius: 5px 0 0 5px;
+		}
+
+		.next {
+			right: 10px;
+			border-radius: 0 5px 5px 0;
+		}
+
+		@media (max-width: 600px) {
+			.container {
+				padding: 10px;
+			}
+		}
+		
+	</style>
 	<script>
-		var imageLinks = [
+	var imageLinks = [
 			"https://drive.google.com/uc?id=1mRQ1NpKz0sTfGtjd5fpKKnRvP0mM2qz1",
 "https://drive.google.com/uc?id=1VrSZebesstdYpwVbdkUraD1AnhrIILRc",
 "https://drive.google.com/uc?id=1l1N0vwUsoUXjaVw-qoj7iAccv-fjCmKZ",
@@ -19,7 +122,7 @@
 "https://drive.google.com/uc?id=17njJr0UbnT3INcbbgkqPd_pmVD9PKdyL"
 		];
 		var currentIndex = 0;
-
+		
 		function showImage(index) {
 			$("#slideshow").attr("src", imageLinks[index]);
 			$(".dot").removeClass("active");
@@ -42,40 +145,15 @@
 				showImage(currentIndex - 1);
 			}
 		}
-
-		
 	</script>
-	<style>
-		#slideshow {
-			width: 50%;
-			height :550px;
-			cursor: pointer;
-			display: block;
-			margin: 0 auto;
-		}
-
-		.dots {
-			text-align: center;
-			margin-top: 20px;
-		}
-
-		.dot {
-			display: inline-block;
-			width: 10px;
-			height: 10px;
-			border-radius: 50%;
-			background-color: #bbb;
-			margin: 0 5px;
-			cursor: pointer;
-		}
-
-		.dot.active {
-			background-color: #555;
-		}
-	</style>
 </head>
-<body> 
-	<img id="slideshow" src="https://drive.google.com/uc?id=1mRQ1NpKz0sTfGtjd5fpKKnRvP0mM2qz1">
+<body>
+	
+	<div class="container">
+	
+		<div class="slideshow-container">
+		<h3 style="text-align: justify; font-family: Georgia;"> Pawsitive Puppies </h3>
+			<img id="slideshow" src="https://drive.google.com/uc?id=1yDqRmzYrSUxy2ZxWmMf_CsVz7ZQO4sTv">
 	<div class="dots">
 		<span class="dot active" onclick="showImage(0)"></span>
 		<span class="dot" onclick="showImage(1)"></span>
@@ -89,6 +167,7 @@
 		<span class="dot" onclick="showImage(9)"></span>
 		<span class="dot" onclick="showImage(10)"></span>
 		<span class="dot" onclick="showImage(11)"></span>
+		<span class="dot" onclick="showImage(12)"></span>
 	</div>
 	<script>
 		$(document).ready(function() {
